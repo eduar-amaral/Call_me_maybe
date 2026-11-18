@@ -1,0 +1,46 @@
+[project]
+name = "call-me-maybe"
+version = "0.1.0"
+description = "LLM-based function calling with constrained decoding"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy",
+    "pydantic",
+    "llm-sdk",
+]
+
+[dependency-groups]
+dev = [
+    "flake8>=7.1.0",
+    "mypy>=1.11.0",
+    "pytest>=8.0.0",
+]
+
+
+
+[tool.flake8]
+exclude = [
+    ".git",
+    ".venv",
+    "llm_sdk",
+    "__pycache__",
+]
+max-line-length = 79
+
+[tool.mypy]
+python_version = "3.10"
+files = ["src"]
+exclude = [
+    ".venv",
+    "llm_sdk",
+    "tests",
+]
+plugins = ["pydantic.mypy"]
+warn_return_any = true
+warn_unused_configs = true
+check_untyped_defs = true
+disallow_untyped_defs = true
+
+[tool.uv.sources]
+llm-sdk = {path = "llm_sdk"}
